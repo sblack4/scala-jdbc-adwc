@@ -1,0 +1,27 @@
+.DS_Store
+
+wallet*
+
+# for now
+launch.sh
+
+# logs can get REALLY big 
+*.log  
+
+# java 
+*.jar 
+
+# Scala target 
+*.class  
+
+# SBT 
+dist/* 
+target/ 
+lib_managed/ 
+src_managed/ 
+project/
+!project/build.properties
+!project/plugins.sbt
+.history 
+.cache 
+.lib/
