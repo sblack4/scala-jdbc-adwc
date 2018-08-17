@@ -28,8 +28,11 @@ object Main {
         println("connection: ")
         println(connection)
 
+        // when you're debugging it's best to leave out 
+        // any try-catch blocks
+        // - that way you get to see all the errors in all their glory!
 
-        try {
+        // try {
 
             Security.insertProviderAt(new OraclePKIProvider, 3)
 
@@ -43,21 +46,26 @@ object Main {
             val stmt = conn.createStatement()
 
             // val query = "SELECT count(*) from ssb.lineorder where rownum < 5"
-            val query = "select 'hello world' from dual"
+            // val query = "select 'hello world' from dual"
+            val query = "insert into tickets values ('992303772928262318', '2017-07-06','feature','Moment bring offi...')"
+
+            println(query)
             val rset = stmt.executeQuery(query)
 
-            while (rset.next())
-               println(rset.getString(1))
+            // uncomment these two lines for any SELECT queries
+
+            // while (rset.next())
+            //    println(rset.getString(1))
 
             rset.close()
             stmt.close()
             conn.close()
-        } catch {
-            case e: SQLException => {
-                println("Connection Failed")
-                println(e.getStackTrace)
-            }
-        }
+        // } catch {
+        //     case e: SQLException => {
+        //         println("Connection Failed")
+        //         println(e.getStackTrace)
+        //     }
+        // }
     }
 }
 
