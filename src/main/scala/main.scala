@@ -19,12 +19,12 @@ object Main {
         // val connection = args(4)
         // val url = "jdbc:oracle:oci8:@"
 
-        val wallet_dir = "/Users/DV79FN/Git/kafka-streams-adwc/scala-jdbc-adwc/wallet_LUIGI"
+        val wallet_dir = "/Users/DV79FN/Git/kafka-streams-adwc/kafka-spark-jdbc/wallet_CRAB"
         val wallet_location = s"(SOURCE=(METHOD=file)(METHOD_DATA=(DIRECTORY=$wallet_dir)))"
         val tns_admin = wallet_dir
         val user = "admin"
         val password = "Welcome123321"
-        val connection = s"jdbc:oracle:thin:@luigi_low?TNS_ADMIN=$tns_admin"
+        val connection = s"jdbc:oracle:thin:@crab_low?TNS_ADMIN=$tns_admin"
         println("connection: ")
         println(connection)
 
@@ -46,16 +46,16 @@ object Main {
             val stmt = conn.createStatement()
 
             // val query = "SELECT count(*) from ssb.lineorder where rownum < 5"
-            // val query = "select 'hello world' from dual"
-            val query = "insert into tickets values ('992303772928262318', '2017-07-06','feature','Moment bring offi...')"
+            val query = "select 'hello world' from dual"
+            // val query = "insert into tickets values ('992303772928262318', '2017-07-06','feature','Moment bring offi...')"
 
             println(query)
             val rset = stmt.executeQuery(query)
 
             // uncomment these two lines for any SELECT queries
 
-            // while (rset.next())
-            //    println(rset.getString(1))
+            while (rset.next())
+               println(rset.getString(1))
 
             rset.close()
             stmt.close()
